@@ -19,7 +19,7 @@ public class FamiliadaAnswer {
     private Long id;
 
     private String name;   // tekst odpowiedzi
-    private String point;  // liczba punktów jako tekst? (może lepiej Integer)
+    private Integer point;  // liczba punktów jako tekst? (może lepiej Integer)
 
     @ManyToOne
     @JoinColumn(name = "familiada_id")
