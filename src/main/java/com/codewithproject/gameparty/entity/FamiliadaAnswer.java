@@ -19,10 +19,11 @@ public class FamiliadaAnswer {
     private Long id;
 
     private String name;   // tekst odpowiedzi
-    private Integer point;  // liczba punktów jako tekst? (może lepiej Integer)
+    private Integer point = 0;  // liczba punktów jako tekst? (może lepiej Integer)
 
     @ManyToOne
     @JoinColumn(name = "familiada_id")
     @JsonBackReference
     private Familiada familiada;
+
 }

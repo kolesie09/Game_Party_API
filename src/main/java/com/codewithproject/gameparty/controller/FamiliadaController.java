@@ -44,4 +44,15 @@ public class FamiliadaController {
         return ResponseEntity.ok(result);
     }
 
+    @PostMapping("/question")
+    public ResponseEntity<Familiada> postFamiliada(@RequestBody Familiada familiada) {
+        if (familiada.getAnswers() != null) {
+            for (FamiliadaAnswer answer : familiada.getAnswers()) {
+                answer.setFamiliada(familiada);
+            }
+        }
+        Familiada saved = familiadaService.postFamiliada(familiada);
+        return ResponseEntity.ok(saved);
+    }
+
 }
