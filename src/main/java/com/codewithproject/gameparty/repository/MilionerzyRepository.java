@@ -12,4 +12,6 @@ public interface MilionerzyRepository extends JpaRepository<Milionerzy, Long> {
 
     List<Milionerzy> findByLevel(Integer level);
 
+    long countByLevel(Integer level);
+
 }

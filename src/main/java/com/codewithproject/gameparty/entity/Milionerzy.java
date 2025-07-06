@@ -13,16 +13,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Getter
+@Setter
 @Entity
+@ToString(exclude = {"answers", "correctAnswer"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Milionerzy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
+
     private String name;
+
+    private Integer level;
 
     @OneToMany(mappedBy = "milionerzy", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -31,7 +41,5 @@ public class Milionerzy {
     @OneToOne
     @JoinColumn(name = "id_correct_answer")
     private MilionerzyAnswer correctAnswer;
-
-    private Integer level;
 
 }
